@@ -7,33 +7,41 @@ Original file is located at
     https://colab.research.google.com/drive/1DzT9kPb2SOiRcWSB49qSgWg4RteZYvvG
 """
 
+# You're not using Lambda functions.
+# You're missing two tasks.
+
 import random
-from Task_1 import decor_1
-from Task_2 import decoratoe_2
-#@decor_1
-decoratoe_2
+
+# The names of imported modules were wrong. 
+from task_1_py import decor_1
+from task_2_py import decoratoe_2
+
+
+@decor_1
+# @decoratoe_2
 def func():
     print("I am ready to Start")
     result = 0
-    n =  random.randint(10,751)
+    n = random.randint(10, 751)
     for i in range(n):
         result += (i**2)
-        
-#@decor_1
-decoratoe_2
+
+
+@decor_1
+# @decoratoe_2
 def funx(n=2, m=5):
     print("I am ready to do serious stuff")
     max_val = float('-inf')
-    n =  random.randint(10,751)
-    res = [pow(i,2) for i in range(n)]
+    n = random.randint(10, 751)
+    res = [pow(i, 2) for i in range(n)]
     for i in res:
-        if i > max_val: 
+        if i > max_val:
             max_val = i
-    
-if __name__ == "__main__": 
-    func()
-    funx()
-    func()
-    funx()
-    func()
 
+
+if __name__ == "__main__":
+    func()
+    funx()
+    func()
+    funx()
+    func()
