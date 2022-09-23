@@ -7,29 +7,32 @@ Original file is located at
     https://colab.research.google.com/drive/1bj0tzYLd7omBBr7387aNtQ5mVupXtQAV
 """
 
+# These modules weren't imported and they are used in the methods below.
+import inspect
+import io
+import contextlib
+
+
 def decoratoe_2(func):
-  #type and name of function in python
-  print('name: \t'+func.__name__)
-  print('type: \t'+str(type(func)))
-  print('sig: \t'+inspect.signature(func))
-  print('Arg: \t positional: ' ,args)
-  print('Arg: \t kwarg: ' , kwargs)
-  print('Doc: \t ' , func.__doc__) # inspect.getdoc(func) for same result we can this one as well
-  print('Source: ',end ='')
-  i=0
-  for l in inspect.getsourcelines(func)[0]:
-    print(('' if i ==0 else '\t')+ l, end='')
-  f=io.stringIO()
-  with contextlib.redirect_stdout(f):
-    func(*args,**kwargs)
-  s=f.getvalue()
-  for l in s.splitlines():
-    print('\t' + l)
-  return wrapper
-
-
-
-
-
-
-
+    # There was no wrapper function.
+    
+    # type and name of function in python
+    def wrapper(*args, **kwargs):
+        print('name: \t'+func.__name__)
+        print('type: \t'+str(type(func)))
+        print('sig: \t', inspect.signature(func))
+        print('Arg: \t positional: ', args)
+        print('Arg: \t kwarg: ', kwargs)
+        # inspect.getdoc(func) for same result we can this one as well
+        print('Doc: \t ', func.__doc__)
+        print('Source: ', end='')
+        i = 0
+        for l in inspect.getsourcelines(func)[0]:
+            print(('' if i == 0 else '\t') + l, end='')
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            func(*args, **kwargs)
+        s = f.getvalue()
+        for l in s.splitlines():
+            print('\t' + l)
+    return wrapper

@@ -11,8 +11,6 @@ from functools import wraps
 import time
 
 
-
-
 def decor_1(func):
     @wraps(func)
     def inner(*args, **kwargs):
@@ -20,12 +18,13 @@ def decor_1(func):
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
         total_time = end_time - start_time
-        print(f'Function {func.__name__}{args} {kwargs} executed in {total_time:.4f} seconds')
+        print(
+            f'Function {func.__name__}{args} {kwargs} executed in {total_time:.4f} seconds')
         return result
     return inner
 
-@decor_1
 
+@decor_1
 def cal_st(num):
     """
     Simple function that returns sum of all numbers up to the square of num.
@@ -33,10 +32,10 @@ def cal_st(num):
     total = sum((x for x in range(0, num**2)))
     return total
 
+
 if __name__ == '__main__':
     cal_st(10)
     cal_st(100)
     cal_st(1000)
     cal_st(5000)
     cal_st(10000)
-
